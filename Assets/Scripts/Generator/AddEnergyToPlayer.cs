@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AddEnergyToPlayer : MonoBehaviour
 {
-    private float energy = 0;
+    private float Energy = 0;
 
     public int FuelRatio = 10;
     public float lastTimeHealed = 0f;
@@ -28,13 +28,7 @@ public class AddEnergyToPlayer : MonoBehaviour
         }
     }
 
-<<<<<<< HEAD
-   
-
-    public void AddFuel(int fuel)
-=======
     public void AddFuel(float fuel)
->>>>>>> 04b6a827630f666641a789eb1025c3fbebc166e6
     {
         Energy += fuel * FuelRatio;
     }
