@@ -12,7 +12,7 @@ public class EnemyMove : MonoBehaviour
         GameObject generator = FindNearestGenerator();
         Vector3 currentPos = gameObject.transform.position;
 
-        if (generator)
+        if (generator != null)
         {
             Vector3.MoveTowards(currentPos, generator.transform.position, Time.deltaTime * Speed);
             return;
@@ -20,7 +20,7 @@ public class EnemyMove : MonoBehaviour
 
         GameObject player = FindNearestPlayer();
 
-        if (player)
+        if (player != null)
         {
 			Vector3.MoveTowards(currentPos, player.transform.position, Time.deltaTime * Speed);
             return;
@@ -40,7 +40,7 @@ public class EnemyMove : MonoBehaviour
 
     private GameObject FindNearestObjectOfType(string type)
     {
-        float minDist = 9999f;
+        float minDist = Mathf.Infinity;
 
         Vector2 pos = gameObject.transform.position;
         
