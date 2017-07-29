@@ -24,8 +24,7 @@ public class AddFuel : MonoBehaviour {
 
 		int fuel = player.GetComponent<PlayerController>().Fuel;
 		while (fuel > 0) {
-			gameObject.GetComponent<AddEnergyToPlayer>().AddFuel(1);
-			fuel--;
+			gameObject.GetComponent<AddEnergyToPlayer>().AddFuel(fuel--);
 		}
 	}
 }
