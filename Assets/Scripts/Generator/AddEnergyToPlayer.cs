@@ -11,6 +11,7 @@ public class AddEnergyToPlayer : MonoBehaviour
     public float healDelay = .5f;
     void OnCollisionStay2D(Collision2D collision)
     {
+        Debug.Log("healling");
         if (collision.gameObject.tag != Tag.Player)
         {
             return;
@@ -19,7 +20,6 @@ public class AddEnergyToPlayer : MonoBehaviour
         if (Energy <= 0) {
             return;
         }
-        Debug.Log("healling");
         PlayerController player = collision.gameObject.GetComponent<PlayerController>();
         if (Time.time > lastTimeHealed+healDelay) {
             player.Energy += 1;
