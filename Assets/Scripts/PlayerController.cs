@@ -69,32 +69,8 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private void RotateSprite() {
-		float rotationDegree = GetRotation();
-		PlayerSprite.transform.rotation = Quaternion.Euler(0,0,rotationDegree);
-	}
-
-	private float GetRotation(){
-		if(Input.GetAxis("Vertical") > 0){
-			if(Input.GetAxis("Horizontal") > 0){
-				return 315.0f;
-			}else if(Input.GetAxis("Horizontal") < 0) {
-				return 45.0f;
-			}
-			return 0;
-		}else if(Input.GetAxis("Vertical") < 0){
-			if(Input.GetAxis("Horizontal") > 0){
-				return 225.0f;
-			}else if(Input.GetAxis("Horizontal") < 0) {
-				return 135.0f;
-			}
-			return 180.0f;
-		}else if(Input.GetAxis("Horizontal") != 0){
-			if(Input.GetAxis("Horizontal") > 0){
-				return 270.0f;
-			}else if(Input.GetAxis("Horizontal") < 0) {
-				return 90.0f;
-			}
-		}
-		return PlayerSprite.transform.rotation.eulerAngles.z;
+		Vector3 dir = Input.mousePosition - Camera.main.WorldToScreenPoint(PlayerSprite.transform.position);
+		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+		PlayerSprite.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 	}
 }
