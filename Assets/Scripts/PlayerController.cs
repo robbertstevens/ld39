@@ -14,11 +14,7 @@ public class PlayerController : MonoBehaviour {
 	
 	public enum PlayerState { Alive, Dead }
 	public PlayerState State = PlayerState.Alive;
-	public GameObject PlayerSprite;
-
-    public enum PlayerState { Alive, Dead }
-    public PlayerState State = PlayerState.Alive;
-    public GameObject PlayerSprite;
+	public GameObject PlayerSprite; 
 
     public float delayShootingMS = 0.1f;
 
