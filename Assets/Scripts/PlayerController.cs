@@ -6,6 +6,9 @@ public class PlayerController : MonoBehaviour {
 	public float Energy = 100.0f;
 	public float Speed = 10.0f;
 	public float FireRate = 1.0f;
+
+	public int Fuel = 0;
+	
 	public enum PlayerState { Alive, Dead }
 	public PlayerState State = PlayerState.Alive;
 	public GameObject PlayerSprite;
