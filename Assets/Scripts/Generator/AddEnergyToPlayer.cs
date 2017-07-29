@@ -15,13 +15,15 @@ public class AddEnergyToPlayer : MonoBehaviour
             return;
         }
         PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-
-        player.Energy += HealPlayer();
+        StartCoroutine(HealPlayer(player));
     }
 
-    private int HealPlayer()
+    private IEnumerator HealPlayer(PlayerController player)
     {
-        return energy--;
+        while(energy > 0) {
+            player.Energy += energy--;
+            yield return new WaitForSecondsRealtime(.1f);   
+        }
     }
 
     public void AddFuel(int fuel)
