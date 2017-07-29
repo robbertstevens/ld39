@@ -4,30 +4,34 @@ using UnityEngine;
 
 public class AddEnergyToPlayer : MonoBehaviour
 {
-    private int energy = 0;
+    public int Energy = 20;
 
     public int FuelRatio = 10;
+    public float lastTimeHealed = 0f;
+    public float healDelay = .5f;
     void OnCollisionStay2D(Collision2D collision)
     {
-        Debug.Log("Healing Player");
         if (collision.gameObject.tag != Tag.Player)
         {
             return;
         }
-        PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-        StartCoroutine(HealPlayer(player));
-    }
 
-    private IEnumerator HealPlayer(PlayerController player)
-    {
-        while(energy > 0) {
-            player.Energy += energy--;
-            yield return new WaitForSecondsRealtime(.1f);   
+        if (Energy <= 0) {
+            return;
+        }
+        Debug.Log("healling");
+        PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+        if (Time.time > lastTimeHealed+healDelay) {
+            player.Energy += 1;
+            Energy--;
+            lastTimeHealed = Time.time;
         }
     }
 
+   
+
     public void AddFuel(int fuel)
     {
-        energy += fuel * FuelRatio;
+        Energy += fuel * FuelRatio;
     }
 }

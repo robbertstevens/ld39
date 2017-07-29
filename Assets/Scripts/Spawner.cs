@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GeneratorSpawner : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
-
     private int Width;
     private int Height;
 
-    public float GeneratorSpawnPeriod;
+    public float SpawnPeriod;
+    public GameObject SpawnablePrefab;
     void Awake()
     {
         MapGenerator map = GetComponent<MapGenerator>();
@@ -25,8 +25,8 @@ public class GeneratorSpawner : MonoBehaviour
         {
             int x = Random.Range(-(Width / 2) + 1, (Width / 2) - 2);
             int y = Random.Range(-(Height / 2) + 1, (Height / 2) - 2);
-            Instantiate(Resources.Load("Prefabs/Generator"), new Vector2(x, y), Quaternion.identity);
-            yield return new WaitForSecondsRealtime(GeneratorSpawnPeriod);
+            Instantiate(SpawnablePrefab, new Vector2(x, y), Quaternion.identity);
+            yield return new WaitForSecondsRealtime(SpawnPeriod);
         }
     }
 }
