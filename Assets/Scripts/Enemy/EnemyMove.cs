@@ -6,6 +6,11 @@ public class EnemyMove : MonoBehaviour
 {
     public float Speed;
 
+    private Rigidbody2D rigidBody;
+    void Awake()
+    {
+        rigidBody = GetComponent<Rigidbody2D>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -14,7 +19,8 @@ public class EnemyMove : MonoBehaviour
 
         if (generator != null)
         {
-            Vector3.MoveTowards(currentPos, generator.transform.position, Time.deltaTime * Speed);
+            Vector2 direction = generator.transform.position - transform.position;
+            rigidBody.AddRelativeForce(direction.normalized * Speed, ForceMode2D.Force);
             return;
         }
 
@@ -22,10 +28,11 @@ public class EnemyMove : MonoBehaviour
 
         if (player != null)
         {
-			Vector3.MoveTowards(currentPos, player.transform.position, Time.deltaTime * Speed);
+            Vector2 direction = player.transform.position - currentPos;
+            rigidBody.AddForce(player.transform.position * Speed);
             return;
         }
-            
+
     }
 
     private GameObject FindNearestGenerator()
@@ -43,8 +50,8 @@ public class EnemyMove : MonoBehaviour
         float minDist = Mathf.Infinity;
 
         Vector2 pos = gameObject.transform.position;
-        
-		GameObject generator = null;
+
+        GameObject generator = null;
         GameObject[] generators = GameObject.FindGameObjectsWithTag(type);
 
         foreach (var gen in generators)

@@ -7,27 +7,35 @@ public class AddEnergyToPlayer : MonoBehaviour
     private float energy = 0;
 
     public int FuelRatio = 10;
+    public float lastTimeHealed = 0f;
+    public float healDelay = .5f;
     void OnCollisionStay2D(Collision2D collision)
     {
-        Debug.Log("Healing Player");
         if (collision.gameObject.tag != Tag.Player)
         {
             return;
         }
-        PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-        StartCoroutine(HealPlayer(player));
-    }
 
-    private IEnumerator HealPlayer(PlayerController player)
-    {
-        while(energy > 0) {
-            player.Energy += energy--;
-            yield return new WaitForSecondsRealtime(.1f);   
+        if (Energy <= 0) {
+            return;
+        }
+        Debug.Log("healling");
+        PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+        if (Time.time > lastTimeHealed+healDelay) {
+            player.Energy += 1;
+            Energy--;
+            lastTimeHealed = Time.time;
         }
     }
 
+<<<<<<< HEAD
+   
+
+    public void AddFuel(int fuel)
+=======
     public void AddFuel(float fuel)
+>>>>>>> 04b6a827630f666641a789eb1025c3fbebc166e6
     {
-        energy += fuel * FuelRatio;
+        Energy += fuel * FuelRatio;
     }
 }
