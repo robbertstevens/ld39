@@ -16,6 +16,11 @@ public class PlayerController : MonoBehaviour {
 	public float delayShootingMS = 0.1f;
 	
 	private float timeStampDelayShooting = 0f;
+	private Rigidbody2D rigidBody;
+
+	void Awake(){
+		rigidBody = GetComponent<Rigidbody2D>();
+	}
 
 	// Update is called once per frame
 	void Update () {
@@ -34,8 +39,12 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private void MovePlayer(){
-		transform.Translate(new Vector2(0,1) * Speed * Input.GetAxis("Vertical") * Time.deltaTime);
-		transform.Translate(new Vector2(1,0) * Speed * Input.GetAxis("Horizontal") * Time.deltaTime);
+		Vector2 towardsPosition = (new Vector2(0,1) * Input.GetAxis("Vertical")) + (new Vector2(1,0) * Input.GetAxis("Horizontal"));
+
+		rigidBody.AddForce(towardsPosition * Speed);
+		
+		// transform.Translate(new Vector2(0,1) * Speed * Input.GetAxis("Vertical") * Time.deltaTime);
+		// transform.Translate(new Vector2(1,0) * Speed * Input.GetAxis("Horizontal") * Time.deltaTime);
 	}
 
 	private void Shoot() {
