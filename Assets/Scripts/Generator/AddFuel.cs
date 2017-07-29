@@ -22,7 +22,7 @@ public class AddFuel : MonoBehaviour {
 
 		GameObject player = collision.gameObject;
 
-		int fuel = player.GetComponent<PlayerController>().Fuel;
+		float fuel = player.GetComponent<PlayerController>().Fuel;
 		while (fuel > 0) {
 			gameObject.GetComponent<AddEnergyToPlayer>().AddFuel(fuel--);
 		}
