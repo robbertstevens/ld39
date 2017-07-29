@@ -14,10 +14,10 @@ public class PlayerController : MonoBehaviour {
 	public GameObject PlayerSprite;
 	public GameObject bulletPrefab;
 
-	public float delayShootingMS = 1f;
+	public float delayShootingMS = 0.1f;
 	
-	public float timeStampDelayShooting = 0f;
-	
+	private float timeStampDelayShooting = 0f;
+
 	// Update is called once per frame
 	void Update () {
 		switch (State)
