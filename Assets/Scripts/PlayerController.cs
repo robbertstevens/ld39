@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 	public float Energy = 100.0f;
+	public float MaxEnergy = 100.0f;
 	public float Speed = 10.0f;
 	public float FireRate = 1.0f;
 	public float bulletCost = 0.5f;
 
-	public int Fuel = 0;
+	public float Fuel = 0.0f;
+	public float MaxFuel = 100.0f;
 	
 	public enum PlayerState { Alive, Dead }
 	public PlayerState State = PlayerState.Alive;

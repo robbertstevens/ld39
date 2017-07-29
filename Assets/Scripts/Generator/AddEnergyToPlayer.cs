@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AddEnergyToPlayer : MonoBehaviour
 {
-    private int energy = 0;
+    private float energy = 0;
 
     public int FuelRatio = 10;
     void OnCollisionStay2D(Collision2D collision)
@@ -26,7 +26,7 @@ public class AddEnergyToPlayer : MonoBehaviour
         }
     }
 
-    public void AddFuel(int fuel)
+    public void AddFuel(float fuel)
     {
         energy += fuel * FuelRatio;
     }
