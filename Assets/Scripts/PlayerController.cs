@@ -12,12 +12,11 @@ public class PlayerController : MonoBehaviour {
 	public enum PlayerState { Alive, Dead }
 	public PlayerState State = PlayerState.Alive;
 	public GameObject PlayerSprite;
-	public GameObject bulletPrefab;
 
-	public float delayShootingMS = 1f;
+	public float delayShootingMS = 0.1f;
 	
-	public float timeStampDelayShooting = 0f;
-	
+	private float timeStampDelayShooting = 0f;
+
 	// Update is called once per frame
 	void Update () {
 		switch (State)
@@ -41,7 +40,7 @@ public class PlayerController : MonoBehaviour {
 
 	private void Shoot() {
 		if(Time.time >= timeStampDelayShooting && Input.GetButton("Fire1") || Input.GetButtonDown("Fire1")){
-			GameObject bullet = Instantiate(Resources.Load("Bullet"), transform.position, transform.rotation) as GameObject; 
+			GameObject bullet = Instantiate(Resources.Load("Prefabs/Bullet"), transform.position, transform.rotation) as GameObject; 
 			bullet.transform.rotation = Quaternion.Euler(0,0, PlayerSprite.transform.rotation.eulerAngles.z);
 			timeStampDelayShooting = Time.time + delayShootingMS;
 		}
