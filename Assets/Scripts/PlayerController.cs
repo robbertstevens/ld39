@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
 	public float Energy = 100.0f;
 	public float Speed = 10.0f;
 	public float FireRate = 1.0f;
+	public float bulletCost = 0.5f;
 
 	public int Fuel = 0;
 	
@@ -30,21 +31,20 @@ public class PlayerController : MonoBehaviour {
 				MovePlayer();
 				RotateSprite();
 				Shoot();
+				CheckHealth();
 			break;
 			case PlayerState.Dead:
+				KillPlayer();
 			break;
 			default:
 			break;
 		}
+		
 	}
 
 	private void MovePlayer(){
 		Vector2 towardsPosition = (new Vector2(0,1) * Input.GetAxis("Vertical")) + (new Vector2(1,0) * Input.GetAxis("Horizontal"));
-
 		rigidBody.AddForce(towardsPosition * Speed);
-		
-		// transform.Translate(new Vector2(0,1) * Speed * Input.GetAxis("Vertical") * Time.deltaTime);
-		// transform.Translate(new Vector2(1,0) * Speed * Input.GetAxis("Horizontal") * Time.deltaTime);
 	}
 
 	private void Shoot() {
@@ -52,7 +52,18 @@ public class PlayerController : MonoBehaviour {
 			GameObject bullet = Instantiate(Resources.Load("Prefabs/Bullet"), transform.position, transform.rotation) as GameObject; 
 			bullet.transform.rotation = Quaternion.Euler(0,0, PlayerSprite.transform.rotation.eulerAngles.z);
 			timeStampDelayShooting = Time.time + delayShootingMS;
+			Energy -= bulletCost;
 		}
+	}
+
+	private void CheckHealth(){
+		if(Energy <= 0){
+			State = PlayerState.Dead;
+		}
+	}
+
+	private void KillPlayer(){
+		Destroy(this.gameObject);
 	}
 
 	private void RotateSprite() {
