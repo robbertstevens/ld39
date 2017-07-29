@@ -129,10 +129,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Energy: 100
+  MaxEnergy: 100
   Speed: 80
   FireRate: 1
   bulletCost: 0.5
   Fuel: 0
+  MaxFuel: 100
   State: 0
   PlayerSprite: {fileID: 1706697804283618}
   delayShootingMS: 0.1
