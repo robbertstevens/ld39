@@ -257,10 +257,13 @@ MonoBehaviour:
   speedShotgun: 10
   speedRapidFire: 10
   speedSniper: 30
+  speedBackfire: 10
   damageNormal: 5
   damageShotgun: 12
   damageRapidFire: 8
   damageSniper: 1000
+  damageBackfire: 10
+  ShootSound: {fileID: 8300000, guid: 19824f8456679244381ac6f583ff2227, type: 3}
 --- !u!114 &114789361541007332
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -277,14 +280,13 @@ MonoBehaviour:
   Speed: 4000
   FireRate: 1
   EnemyHitDamage: 10
-  Fuel: 0
+  Fuel: 10
   MaxFuel: 100
   State: 0
   PlayerSprite: {fileID: 1706697804283618}
   InRangeOfGenerator: 0
   MinDistanceToGenerator: 3
   delayInvulnarable: 1
-  ShootSound: {fileID: 8300000, guid: 19824f8456679244381ac6f583ff2227, type: 3}
   PowerupSound: {fileID: 8300000, guid: df6341ce4b73a3d49a6c3c7dac5ddd0f, type: 3}
   HurtSound: {fileID: 8300000, guid: 4569f08df149a5f49a3605f0cd5e1066, type: 3}
 --- !u!124 &124753665027969524

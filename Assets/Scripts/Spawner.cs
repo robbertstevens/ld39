@@ -9,6 +9,7 @@ public class Spawner : MonoBehaviour
 
     public float SpawnPeriod;
     public GameObject SpawnablePrefab;
+    public bool FasterRespawn = false;
     void Awake()
     {
         MapGenerator map = GetComponent<MapGenerator>();
@@ -23,10 +24,15 @@ public class Spawner : MonoBehaviour
     {
         while (true)
         {
+            yield return new WaitForSecondsRealtime(SpawnPeriod);
+            if (FasterRespawn) {
+                SpawnPeriod -= .5f;
+                
+                if(SpawnPeriod < 1) SpawnPeriod = 1;
+            }
             int x = Random.Range(-(Width / 2) + 1, (Width / 2) - 2);
             int y = Random.Range(-(Height / 2) + 1, (Height / 2) - 2);
             Instantiate(SpawnablePrefab, new Vector2(x, y), Quaternion.identity);
-            yield return new WaitForSecondsRealtime(SpawnPeriod);
         }
     }
 }

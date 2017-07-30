@@ -49,6 +49,6 @@ public class PickupScript : MonoBehaviour {
 	}
 
 	void FuelBehavoir(Collider2D collider){
-		collider.gameObject.GetComponent<PlayerController>().Fuel +=1;
+		collider.gameObject.GetComponent<PlayerController>().Fuel +=10;
 	}
 }
