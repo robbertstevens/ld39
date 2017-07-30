@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
                 CheckHealth();
                 CheckInvulnarable();
                 CheckIfInRangeOfGenerator();
+                ApplyFuelToGenerator();
                 break;
             case PlayerState.Dead:
                 KillPlayer();
@@ -103,9 +104,10 @@ public class PlayerController : MonoBehaviour
     }
     private void ApplyFuelToGenerator()
     {
-        if (Input.GetKeyDown(KeyCode.F) && InRangeOfGenerator && Fuel > 0)
+        if (Input.GetButtonDown("Use") && InRangeOfGenerator && (Fuel > 0))
         {
-            nearestGenerator.GetComponent<Fuel>().Add(Fuel--);
+            Fuel -= 1;
+            nearestGenerator.GetComponent<Fuel>().Add(1);
         }
     }
     private void CheckHealth()
