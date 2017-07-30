@@ -10,7 +10,7 @@ public class Fuel : MonoBehaviour {
 
 	public GameObject HealingAura;
 	public void Add(float fuel) {
-		gameObject.GetComponent<Fuel>().Amount += fuel;
+		Amount += fuel;
 	}
 	void Awake() {
 		HealingAura = Instantiate(HealingAura, transform.position, Quaternion.identity);

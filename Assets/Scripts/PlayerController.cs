@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
     }
     private void ApplyFuelToGenerator()
     {
-        if (Input.GetButton("F") && InRangeOfGenerator && Fuel > 0)
+        if (Input.GetKeyDown(KeyCode.F) && InRangeOfGenerator && Fuel > 0)
         {
             nearestGenerator.GetComponent<Fuel>().Add(Fuel--);
         }

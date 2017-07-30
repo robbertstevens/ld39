@@ -11,7 +11,9 @@ public class GeneratorHealth : MonoBehaviour {
 		if(Hits > 0) {
 			return;
 		}
+		Destroy(gameObject.GetComponent<Fuel>().HealingAura);
 		Destroy(gameObject);
+
 	}
 	void OnCollisionEnter2D(Collision2D collision) {
 		if ( collision.gameObject.tag != Tag.Enemy) {
