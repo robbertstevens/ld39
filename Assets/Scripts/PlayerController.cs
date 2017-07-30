@@ -192,4 +192,8 @@ public class PlayerController : MonoBehaviour
 
         return generator;
     }
+
+    public void ChangePowerUp(ShootScript.PowerUp PowerUpType){
+        gameObject.GetComponent<ShootScript>().ChangePowerUp(PowerUpType);
+    }
 }
