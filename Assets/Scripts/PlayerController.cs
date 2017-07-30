@@ -72,8 +72,12 @@ public class PlayerController : MonoBehaviour
             InRangeOfGenerator = false;
             return;
         }
+        if (Fuel > 0)
+        {
+            InRangeOfGenerator = true;
+        }
 
-        InRangeOfGenerator = true;
+        InRangeOfGenerator = false;
 
     }
     private void MovePlayer()
@@ -144,7 +148,8 @@ public class PlayerController : MonoBehaviour
 
     private void KillPlayer()
     {
-        if(PlayerSprite != null){
+        if (PlayerSprite != null)
+        {
             Destroy(this.PlayerSprite);
             PlayerSprite = null;
         }
