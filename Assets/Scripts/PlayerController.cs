@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Range(0f, 100f)]
     public float Energy = 100.0f;
     public float MaxEnergy = 100.0f;
     public float Speed = 10.0f;
@@ -39,7 +40,6 @@ public class PlayerController : MonoBehaviour
         switch (State)
         {
             case PlayerState.Alive:
-                MovePlayer();
                 RotateSprite();
                 Shoot();
                 CheckHealth();
@@ -54,7 +54,16 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
+    void FixedUpdate()
+    {
+        switch (State)
+        {
+            case PlayerState.Alive:
+                MovePlayer();
+                break;
+            default: break;
+        }
+    }
     private GameObject nearestGenerator = null;
     private void CheckIfInRangeOfGenerator()
     {
@@ -82,8 +91,8 @@ public class PlayerController : MonoBehaviour
     }
     private void MovePlayer()
     {
-        Vector2 towardsPosition = (new Vector2(0, 1) * Input.GetAxis("Vertical")) + (new Vector2(1, 0) * Input.GetAxis("Horizontal"));
-        rigidBody.AddForce(towardsPosition * Speed * Time.deltaTime);
+        Vector2 direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        rigidBody.AddForce(direction.normalized * Speed * Time.deltaTime);
     }
 
     private void Shoot()
@@ -194,7 +203,8 @@ public class PlayerController : MonoBehaviour
         return generator;
     }
 
-    public void ChangePowerUp(ShootScript.PowerUp PowerUpType){
+    public void ChangePowerUp(ShootScript.PowerUp PowerUpType)
+    {
         AudioSource.PlayClipAtPoint(PowerupSound, transform.position);
         gameObject.GetComponent<ShootScript>().ChangePowerUp(PowerUpType);
     }

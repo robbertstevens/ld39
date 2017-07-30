@@ -28,8 +28,8 @@ public class EnemyMove : MonoBehaviour
 
         if (player != null)
         {
-            Vector2 direction = player.transform.position - currentPos;
-            rigidBody.AddForce(player.transform.position * Speed);
+            Vector2 direction = player.transform.position - transform.position;
+            rigidBody.AddRelativeForce(direction.normalized * Speed, ForceMode2D.Force);
             return;
         }
 
