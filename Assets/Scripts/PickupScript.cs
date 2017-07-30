@@ -7,7 +7,8 @@ public class PickupScript : MonoBehaviour {
 	public enum PickupType {
 		Fuel,
 		Shotgun,
-		RapidFire
+		RapidFire,
+		Sniper
 	}
 	
 	public PickupType PrefabPickupType;
@@ -28,6 +29,9 @@ public class PickupScript : MonoBehaviour {
 				break;
 			case PickupType.RapidFire:
 				PowerUpBehavoir(collider, ShootScript.PowerUp.RapidFire);
+				break;
+			case PickupType.Sniper:
+				PowerUpBehavoir(collider, ShootScript.PowerUp.Sniper);
 				break;
 			default:
 				break;
