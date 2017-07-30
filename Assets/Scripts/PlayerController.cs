@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     private float timeStampInvulnarable = 0f;
     private Rigidbody2D rigidBody;
     private bool coroutineCalled = false;
+    private bool isDead = false;
 
     void Awake()
     {
@@ -155,10 +156,12 @@ public class PlayerController : MonoBehaviour
 
     private void KillPlayer()
     {
-        if (PlayerSprite != null)
+        if (!isDead)
         {
-            Destroy(this.PlayerSprite);
-            PlayerSprite = null;
+            Sprite dead = Resources.Load<Sprite>("Sprites/MattDead");
+            Debug.Log(dead);
+            PlayerSprite.GetComponent<SpriteRenderer>().sprite = dead;
+            isDead = true;
         }
     }
 
