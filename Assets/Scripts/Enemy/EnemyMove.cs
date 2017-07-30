@@ -67,4 +67,11 @@ public class EnemyMove : MonoBehaviour
 
         return generator;
     }
+
+    void OnCollisionEnter2D(Collision2D collision){
+        if(collision.gameObject.tag == Tag.Generator || collision.gameObject.tag == Tag.Player){
+            Vector2 direction = transform.position - collision.transform.position;
+            rigidBody.AddRelativeForce(direction.normalized * 2000);
+        }
+    }
 }

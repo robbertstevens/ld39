@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
     private void MovePlayer()
     {
         Vector2 towardsPosition = (new Vector2(0, 1) * Input.GetAxis("Vertical")) + (new Vector2(1, 0) * Input.GetAxis("Horizontal"));
-        rigidBody.AddForce(towardsPosition * Speed);
+        rigidBody.AddForce(towardsPosition * Speed * Time.deltaTime);
     }
 
     private void Shoot()
@@ -144,7 +144,10 @@ public class PlayerController : MonoBehaviour
 
     private void KillPlayer()
     {
-        Destroy(this.gameObject);
+        if(PlayerSprite != null){
+            Destroy(this.PlayerSprite);
+            PlayerSprite = null;
+        }
     }
 
     private void RotateSprite()
