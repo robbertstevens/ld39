@@ -8,9 +8,6 @@ public class Health : MonoBehaviour {
 	
 	public List<GameObject> loot;
 
-	void Awake() {
-		//loot = new List<GameObject>();
-	}
 	// Update is called once per frame
 	void Update () {
 		if (Energy > 0) {

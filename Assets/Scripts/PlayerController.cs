@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour
     public bool InRangeOfGenerator;
     public float MinDistanceToGenerator = 3f;
     public float delayInvulnarable = 1f;
+    public AudioClip ShootSound;
+    public AudioClip PowerupSound;
+    public AudioClip HurtSound;
+    private float timeStampDelayShooting = 0f;
 
     private float timeStampInvulnarable = 0f;
     private Rigidbody2D rigidBody;
@@ -157,6 +161,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Time.time >= timeStampInvulnarable && collision.gameObject.tag == Tag.Enemy)
         {
+            AudioSource.PlayClipAtPoint(HurtSound, transform.position);
             Energy -= EnemyHitDamage;
             timeStampInvulnarable = Time.time + delayInvulnarable;
         }
@@ -190,6 +195,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public void ChangePowerUp(ShootScript.PowerUp PowerUpType){
+        AudioSource.PlayClipAtPoint(PowerupSound, transform.position);
         gameObject.GetComponent<ShootScript>().ChangePowerUp(PowerUpType);
     }
 }
