@@ -8,7 +8,8 @@ public class PickupScript : MonoBehaviour {
 		Fuel,
 		Shotgun,
 		RapidFire,
-		Sniper
+		Sniper,
+		BackFire
 	}
 	
 	public PickupType PrefabPickupType;
@@ -32,6 +33,9 @@ public class PickupScript : MonoBehaviour {
 				break;
 			case PickupType.Sniper:
 				PowerUpBehavoir(collider, ShootScript.PowerUp.Sniper);
+				break;
+			case PickupType.BackFire:
+				PowerUpBehavoir(collider, ShootScript.PowerUp.BackFire);
 				break;
 			default:
 				break;

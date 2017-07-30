@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShootScript : MonoBehaviour {
 
-	public enum PowerUp { Nothing, Shotgun, RapidFire, Sniper }
+	public enum PowerUp { Nothing, Shotgun, RapidFire, Sniper, BackFire }
 	public PowerUp CurrentPowerUp = PowerUp.Nothing;
     public GameObject BulletLocation;
 
@@ -24,11 +24,13 @@ public class ShootScript : MonoBehaviour {
 	public float speedShotgun = 10f;
 	public float speedRapidFire = 10f;
 	public float speedSniper = 30f;	
+	public float speedBackfire = 10f;
 
 	public float damageNormal = 10f;
 	public float damageShotgun = 10f;
 	public float damageRapidFire = 10f;
 	public float damageSniper = 1000f;
+	public float damageBackfire = 10f;
 
     private float timeStampDelayShooting = 0f;
 	
@@ -50,6 +52,9 @@ public class ShootScript : MonoBehaviour {
 				case PowerUp.Sniper:
 					ShootNormal(rotation, delayShootingMSSniper, damageSniper, speedSniper);
 					return costSniper;
+				case PowerUp.BackFire:
+					ShootBackfire(rotation);
+					return costBackfire;
 				case PowerUp.Nothing:
 					ShootNormal(rotation, delayShootingMSNormal, damageRapidFire, speedRapidFire);
 					return costNormal;
@@ -80,6 +85,22 @@ public class ShootScript : MonoBehaviour {
 		timeStampDelayShooting = Time.time + delayShootingMSShotgun;
 	}
 
+	private void ShootBackfire(float rotation){
+		GameObject bullet1 = Instantiate(Resources.Load("Prefabs/Bullet"), BulletLocation.transform.position, BulletLocation.transform.rotation) as GameObject;
+		bullet1.transform.rotation = Quaternion.Euler(0, 0, rotation);
+		bullet1.GetComponent<BulletScript>().speed = speedShotgun;
+		bullet1.GetComponent<Damage>().Amount = damageShotgun;
+
+		Vector2 backwardsPosition = transform.position - (BulletLocation.transform.position - transform.position);
+
+		GameObject bullet2 = Instantiate(Resources.Load("Prefabs/Bullet"), new Vector3(backwardsPosition.x, backwardsPosition.y, BulletLocation.transform.position.z), BulletLocation.transform.rotation) as GameObject;
+		bullet2.transform.rotation = Quaternion.Euler(0, 0, rotation + 180);
+		bullet2.GetComponent<BulletScript>().speed = speedBackfire;
+		bullet2.GetComponent<Damage>().Amount = damageBackfire;
+
+		timeStampDelayShooting = Time.time + delayShootingMSBackfire;
+	}
+
 	private void ShootNormal(float rotation, float delay, float damage, float speed){
 		GameObject bullet = Instantiate(Resources.Load("Prefabs/Bullet"), BulletLocation.transform.position, BulletLocation.transform.rotation) as GameObject;
 		bullet.transform.rotation = Quaternion.Euler(0, 0, rotation);
@@ -87,4 +108,5 @@ public class ShootScript : MonoBehaviour {
 		bullet.GetComponent<Damage>().Amount = damage;
 		timeStampDelayShooting = Time.time + delay;
 	}
+
 }
