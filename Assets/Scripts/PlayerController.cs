@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour {
 	public enum PlayerState { Alive, Dead }
 	public PlayerState State = PlayerState.Alive;
 	public GameObject PlayerSprite; 
+    public GameObject BulletLocation;
 
     public float delayShootingMS = 0.1f;
 
@@ -56,7 +57,7 @@ public class PlayerController : MonoBehaviour {
     {
         if (Time.time >= timeStampDelayShooting && Input.GetButton("Fire1") || Input.GetButtonDown("Fire1"))
         {
-            GameObject bullet = Instantiate(Resources.Load("Prefabs/Bullet"), transform.position, transform.rotation) as GameObject;
+            GameObject bullet = Instantiate(Resources.Load("Prefabs/Bullet"), BulletLocation.transform.position, BulletLocation.transform.rotation) as GameObject;
             bullet.transform.rotation = Quaternion.Euler(0, 0, PlayerSprite.transform.rotation.eulerAngles.z);
             timeStampDelayShooting = Time.time + delayShootingMS;
             Energy -= bulletCost;
