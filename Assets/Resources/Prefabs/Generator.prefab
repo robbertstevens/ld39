@@ -108,8 +108,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d052604b0bd51488bb16e863e15eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Amount: 10
+  Amount: 0
   HealingActive: 0
+  GeneratorSound: {fileID: 8300000, guid: a535422a3ea5a4243a797806f73bf0e9, type: 3}
   HealingAura: {fileID: 1074605862806670, guid: c3d763888cc4c31449a419f4fd15ab33,
     type: 2}
 --- !u!114 &114492800674177668
@@ -123,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c14783281a48c45ab7d8bd49b89297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hits: 5
+  Hits: 10
 --- !u!212 &212428575692782642
 SpriteRenderer:
   m_ObjectHideFlags: 1

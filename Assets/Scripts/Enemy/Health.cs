@@ -2,34 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour {
+public class Health : MonoBehaviour
+{
 
-	public float Energy = 100;
-	
-	public List<GameObject> loot;
+    public float Energy = 100;
 
-	// Update is called once per frame
-	void Update () {
-		if (Energy > 0) {
-			return;
-		}
+    public List<GameObject> loot;
 
-		if(loot.Count < 1) {
-			return;
-		}
+    // Update is called once per frame
+    void Update()
+    {
+        if (Energy > 0)
+        {
+            return;
+        }
 
-		int r = Random.Range(0, loot.Count);
-		Instantiate(loot[r], transform.position, Quaternion.identity);
-		Destroy(this.gameObject);
-	}
+        if (loot.Count < 1)
+        {
+            return;
+        }
 
-	void OnCollisionEnter2D(Collision2D collision)
-	{
-		if (collision.gameObject.tag != Tag.Bullet) 
-		{
-			return;
-		}
-		Energy -= collision.gameObject.GetComponent<Damage>().Amount;
+        int r = Random.Range(0, loot.Count);
+        Vector3 pos = new Vector3(transform.position.x, transform.position.y, -3);
 
-	}
+        Instantiate(loot[r], pos, Quaternion.identity);
+        Destroy(this.gameObject);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag != Tag.Bullet)
+        {
+            return;
+        }
+        Energy -= collision.gameObject.GetComponent<Damage>().Amount;
+
+    }
 }

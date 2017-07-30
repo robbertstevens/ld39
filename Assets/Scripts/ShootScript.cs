@@ -34,13 +34,15 @@ public class ShootScript : MonoBehaviour {
 
     private float timeStampDelayShooting = 0f;
 	
+    public AudioClip ShootSound;
 	public void ChangePowerUp(PowerUp PowerUpType){
 		CurrentPowerUp = PowerUpType;
 	}
 
 	public float Shoot(float rotation){
-		if (Time.time >= timeStampDelayShooting && Input.GetButton("Fire1") || Input.GetButtonDown("Fire1"))
-        {
+		if (Time.time >= timeStampDelayShooting && Input.GetButton("Fire1"))
+        {	
+			AudioSource.PlayClipAtPoint(ShootSound, transform.position);
 			switch (CurrentPowerUp)
 			{
 				case PowerUp.Shotgun:

@@ -129,13 +129,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c614270ed1be254469e51777d2457396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Energy: 100
+  Energy: 1
   loot:
   - {fileID: 1777707839495236, guid: eb92a915394d0154fbd833848853ccce, type: 2}
-  - {fileID: 1118895711373858, guid: b480a37fe54344ed4ab8bc8f08e92286, type: 2}
+  - {fileID: 1777707839495236, guid: eb92a915394d0154fbd833848853ccce, type: 2}
+  - {fileID: 1777707839495236, guid: eb92a915394d0154fbd833848853ccce, type: 2}
+  - {fileID: 1777707839495236, guid: eb92a915394d0154fbd833848853ccce, type: 2}
+  - {fileID: 1777707839495236, guid: eb92a915394d0154fbd833848853ccce, type: 2}
   - {fileID: 1133279959051798, guid: 62ee79633c6d14fcb8f22bc65bc6bcca, type: 2}
+  - {fileID: 1118895711373858, guid: b480a37fe54344ed4ab8bc8f08e92286, type: 2}
   - {fileID: 1291249244205820, guid: 13724b76d69c4465cbca0e0df2acfe2f, type: 2}
   - {fileID: 1897734068936202, guid: 09af6087fae064b0da7722241a75afd9, type: 2}
+  - {fileID: 1777707839495236, guid: eb92a915394d0154fbd833848853ccce, type: 2}
 --- !u!114 &114961717831923024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 80
+  AttackPlayerAlways: 0
 --- !u!212 &212431280027805656
 SpriteRenderer:
   m_ObjectHideFlags: 1

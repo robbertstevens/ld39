@@ -7,7 +7,7 @@ public class Fuel : MonoBehaviour {
 	public float Amount = 0;
 	public bool HealingActive = false;
 	private bool CoroutineStarted = false;
-
+	public AudioClip GeneratorSound;
 	public GameObject HealingAura;
 	public void Add(float fuel) {
 		Amount += fuel;
@@ -22,13 +22,13 @@ public class Fuel : MonoBehaviour {
 			StartCoroutine("GenerateEnergy");
 			CoroutineStarted = true;
 		} 
-
 		HealingAura.SetActive(HealingActive);
 
 	}
 
 	IEnumerator GenerateEnergy() {
 		while(Amount > 0) {
+			AudioSource.PlayClipAtPoint(GeneratorSound, transform.position);
 			Amount -= 1;
 			HealingActive = true;
 			yield return new WaitForSeconds(5f);

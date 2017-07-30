@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
     public bool InRangeOfGenerator;
     public float MinDistanceToGenerator = 3f;
     public float delayInvulnarable = 1f;
-    public AudioClip ShootSound;
     public AudioClip PowerupSound;
     public AudioClip HurtSound;
     private float timeStampDelayShooting = 0f;
@@ -38,6 +37,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Energy > 100f) {
+            Energy = 100f;
+        }
+        
         switch (State)
         {
             case PlayerState.Alive:
