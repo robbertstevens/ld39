@@ -84,6 +84,7 @@ public class PlayerController : MonoBehaviour
         if (Fuel > 0)
         {
             InRangeOfGenerator = true;
+            return;
         }
 
         InRangeOfGenerator = false;
