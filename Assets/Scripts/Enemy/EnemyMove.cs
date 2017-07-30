@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
     public float Speed;
+    public bool AttackPlayerAlways;
 
     private Rigidbody2D rigidBody;
     void Awake()
@@ -17,7 +18,7 @@ public class EnemyMove : MonoBehaviour
         GameObject generator = FindNearestGenerator();
         Vector3 currentPos = gameObject.transform.position;
 
-        if (generator != null)
+        if (generator != null && !AttackPlayerAlways)
         {
             Vector2 direction = generator.transform.position - transform.position;
             rigidBody.AddRelativeForce(direction.normalized * Speed, ForceMode2D.Force);
