@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class ShootScript : MonoBehaviour {
 
-	public enum PowerUp { Nothing, Shotgun }
+	public enum PowerUp { Nothing, Shotgun, RapidFire }
 	public PowerUp CurrentPowerUp = PowerUp.Nothing;
     public GameObject BulletLocation;
 
     public float delayShootingMSNormal = 0.1f;
 	public float delayShootingMSShotgun = 0.25f;
+    public float delayShootingMSRapid = 0.025f;
 	
 	public float costNormal = 0.5f;	
 	public float costShotgun = 1f;
+	public float costRapid = 0.25f;	
 
     private float timeStampDelayShooting = 0f;
 	
@@ -28,8 +30,11 @@ public class ShootScript : MonoBehaviour {
 				case PowerUp.Shotgun:
 					ShootShotGun(rotation);
 					return costShotgun;
+				case PowerUp.RapidFire:
+					ShootNormal(rotation, delayShootingMSRapid);
+					return costNormal;
 				case PowerUp.Nothing:
-					ShootNormal(rotation);
+					ShootNormal(rotation, delayShootingMSNormal);
 					return costNormal;
 				default:
 				break;
@@ -50,9 +55,9 @@ public class ShootScript : MonoBehaviour {
 		timeStampDelayShooting = Time.time + delayShootingMSShotgun;
 	}
 
-	private void ShootNormal(float rotation){
+	private void ShootNormal(float rotation, float delay){
 		GameObject bullet = Instantiate(Resources.Load("Prefabs/Bullet"), BulletLocation.transform.position, BulletLocation.transform.rotation) as GameObject;
 		bullet.transform.rotation = Quaternion.Euler(0, 0, rotation);
-		timeStampDelayShooting = Time.time + delayShootingMSNormal;
+		timeStampDelayShooting = Time.time + delay;
 	}
 }

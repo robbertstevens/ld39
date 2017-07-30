@@ -6,7 +6,8 @@ public class PickupScript : MonoBehaviour {
 
 	public enum PickupType {
 		Fuel,
-		Shotgun
+		Shotgun,
+		RapidFire
 	}
 	
 	public PickupType PrefabPickupType;
@@ -23,7 +24,10 @@ public class PickupScript : MonoBehaviour {
 				FuelBehavoir(collider);
 				break;
 			case PickupType.Shotgun:
-				ShotgunBehavoir(collider);
+				PowerUpBehavoir(collider, ShootScript.PowerUp.Shotgun);
+				break;
+			case PickupType.RapidFire:
+				PowerUpBehavoir(collider, ShootScript.PowerUp.RapidFire);
 				break;
 			default:
 				break;
@@ -32,8 +36,8 @@ public class PickupScript : MonoBehaviour {
 		Destroy(this.gameObject);
 	}
 
-	void ShotgunBehavoir(Collider2D collider){
-		collider.gameObject.GetComponent<PlayerController>().ChangePowerUp(ShootScript.PowerUp.Shotgun);
+	void PowerUpBehavoir(Collider2D collider, ShootScript.PowerUp type){
+		collider.gameObject.GetComponent<PlayerController>().ChangePowerUp(type);
 	}
 
 	void FuelBehavoir(Collider2D collider){
