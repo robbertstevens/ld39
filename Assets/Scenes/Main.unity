@@ -210,11 +210,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 223361596487720472, guid: b345ff419e4184951845a429b157ad13,
-        type: 2}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 170073160}
     - target: {fileID: 114368782135130696, guid: b345ff419e4184951845a429b157ad13,
         type: 2}
       propertyPath: Player
@@ -225,14 +220,11 @@ Prefab:
       propertyPath: Player
       value: 
       objectReference: {fileID: 1409443448}
-    - target: {fileID: 4006524299465242, guid: b345ff419e4184951845a429b157ad13, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4999893942423048, guid: b345ff419e4184951845a429b157ad13, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -1
-      objectReference: {fileID: 0}
+    - target: {fileID: 223361596487720472, guid: b345ff419e4184951845a429b157ad13,
+        type: 2}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 170073160}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b345ff419e4184951845a429b157ad13, type: 2}
   m_IsPrefabParent: 0
