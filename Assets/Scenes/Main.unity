@@ -113,6 +113,65 @@ Camera:
   m_PrefabParentObject: {fileID: 20658102674235774, guid: 154ab451181ee499faddd99810557bda,
     type: 2}
   m_PrefabInternal: {fileID: 1639529331}
+--- !u!1 &381446635
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 381446638}
+  - component: {fileID: 381446637}
+  - component: {fileID: 381446636}
+  m_Layer: 0
+  m_Name: HealAura
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &381446636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 381446635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 202437402b826bd42b81fbef24754103, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FuelRatio: 10
+  lastTimeHealed: 0
+  healDelay: 0.5
+--- !u!58 &381446637
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 381446635}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 3
+--- !u!4 &381446638
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 381446635}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1159205072
 Prefab:
   m_ObjectHideFlags: 0
@@ -475,6 +534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d052604b0bd51488bb16e863e15eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Amount: 0
 --- !u!114 &2021203231
 MonoBehaviour:
   m_ObjectHideFlags: 0
