@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AddEnergyToPlayer : MonoBehaviour
+public class HealPlayer : MonoBehaviour
 {
     private float Energy = 0;
 
