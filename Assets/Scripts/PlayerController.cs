@@ -22,7 +22,9 @@ public class PlayerController : MonoBehaviour
     public float MinDistanceToGenerator = 3f;
     public float delayShootingMS = 0.1f;
     public float delayInvulnarable = 1f;
-
+    public AudioClip ShootSound;
+    public AudioClip PowerupSound;
+    public AudioClip HurtSound;
     private float timeStampDelayShooting = 0f;
     private float timeStampInvulnarable = 0f;
     private Rigidbody2D rigidBody;
@@ -90,6 +92,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Time.time >= timeStampDelayShooting && Input.GetButton("Fire1") || Input.GetButtonDown("Fire1"))
         {
+            AudioSource.PlayClipAtPoint(ShootSound, transform.position);
             GameObject bullet = Instantiate(Resources.Load("Prefabs/Bullet"), BulletLocation.transform.position, BulletLocation.transform.rotation) as GameObject;
             bullet.transform.rotation = Quaternion.Euler(0, 0, PlayerSprite.transform.rotation.eulerAngles.z);
             timeStampDelayShooting = Time.time + delayShootingMS;
@@ -166,6 +169,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Time.time >= timeStampInvulnarable && collision.gameObject.tag == Tag.Enemy)
         {
+            AudioSource.PlayClipAtPoint(HurtSound, transform.position);
             Energy -= EnemyHitDamage;
             timeStampInvulnarable = Time.time + delayInvulnarable;
         }
@@ -199,6 +203,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public void ChangePowerUp(ShootScript.PowerUp PowerUpType){
+        AudioSource.PlayClipAtPoint(PowerupSound, transform.position);
         gameObject.GetComponent<ShootScript>().ChangePowerUp(PowerUpType);
     }
 }
