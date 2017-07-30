@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     public float MaxEnergy = 100.0f;
     public float Speed = 10.0f;
     public float FireRate = 1.0f;
-    public float bulletCost = 0.5f;
     public float EnemyHitDamage = 10.0f;
 
     public float Fuel = 0.0f;
@@ -17,15 +16,17 @@ public class PlayerController : MonoBehaviour
     public enum PlayerState { Alive, Dead }
     public PlayerState State = PlayerState.Alive;
     public GameObject PlayerSprite;
-    public GameObject BulletLocation;
     public bool InRangeOfGenerator;
     public float MinDistanceToGenerator = 3f;
-    public float delayShootingMS = 0.1f;
     public float delayInvulnarable = 1f;
+<<<<<<< HEAD
     public AudioClip ShootSound;
     public AudioClip PowerupSound;
     public AudioClip HurtSound;
     private float timeStampDelayShooting = 0f;
+=======
+
+>>>>>>> fafdf3f06c75d1453684efd198e9abd7e4f5a100
     private float timeStampInvulnarable = 0f;
     private Rigidbody2D rigidBody;
     private bool coroutineCalled = false;
@@ -90,14 +91,8 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot()
     {
-        if (Time.time >= timeStampDelayShooting && Input.GetButton("Fire1") || Input.GetButtonDown("Fire1"))
-        {
-            AudioSource.PlayClipAtPoint(ShootSound, transform.position);
-            GameObject bullet = Instantiate(Resources.Load("Prefabs/Bullet"), BulletLocation.transform.position, BulletLocation.transform.rotation) as GameObject;
-            bullet.transform.rotation = Quaternion.Euler(0, 0, PlayerSprite.transform.rotation.eulerAngles.z);
-            timeStampDelayShooting = Time.time + delayShootingMS;
-            Energy -= bulletCost;
-        }
+        float cost = gameObject.GetComponent<ShootScript>().Shoot(PlayerSprite.transform.rotation.eulerAngles.z);
+        Energy -= cost;
     }
     private void ApplyFuelToGenerator()
     {
