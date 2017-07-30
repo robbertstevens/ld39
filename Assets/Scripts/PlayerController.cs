@@ -19,14 +19,11 @@ public class PlayerController : MonoBehaviour
     public bool InRangeOfGenerator;
     public float MinDistanceToGenerator = 3f;
     public float delayInvulnarable = 1f;
-<<<<<<< HEAD
     public AudioClip ShootSound;
     public AudioClip PowerupSound;
     public AudioClip HurtSound;
     private float timeStampDelayShooting = 0f;
-=======
 
->>>>>>> fafdf3f06c75d1453684efd198e9abd7e4f5a100
     private float timeStampInvulnarable = 0f;
     private Rigidbody2D rigidBody;
     private bool coroutineCalled = false;
