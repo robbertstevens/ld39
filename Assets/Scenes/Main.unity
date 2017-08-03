@@ -433,7 +433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Visible: {fileID: 742919208}
-  PlayerScript: {fileID: 0}
+  PlayerScript: {fileID: 1409443451}
 --- !u!1 &742919208
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,6 +1004,10 @@ GameObject:
   - component: {fileID: 1997272895}
   - component: {fileID: 1997272897}
   - component: {fileID: 1997272896}
+  - component: {fileID: 1997272901}
+  - component: {fileID: 1997272900}
+  - component: {fileID: 1997272899}
+  - component: {fileID: 1997272898}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1124,6 +1128,66 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnPeriod: 20
+  SpawnablePrefab: {fileID: 1070880468991092, guid: 8b3088165552824419853e1d4f70c0f9,
+    type: 2}
+  FasterRespawn: 1
+--- !u!114 &1997272898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1997272889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bf13c90d8f1466439315522c0a5c70c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnPeriod: 14
+  SpawnablePrefab: {fileID: 1070880468991092, guid: 8b3088165552824419853e1d4f70c0f9,
+    type: 2}
+  FasterRespawn: 1
+--- !u!114 &1997272899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1997272889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bf13c90d8f1466439315522c0a5c70c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnPeriod: 13
+  SpawnablePrefab: {fileID: 1070880468991092, guid: 8b3088165552824419853e1d4f70c0f9,
+    type: 2}
+  FasterRespawn: 1
+--- !u!114 &1997272900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1997272889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bf13c90d8f1466439315522c0a5c70c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnPeriod: 12
+  SpawnablePrefab: {fileID: 1070880468991092, guid: 8b3088165552824419853e1d4f70c0f9,
+    type: 2}
+  FasterRespawn: 1
+--- !u!114 &1997272901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1997272889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bf13c90d8f1466439315522c0a5c70c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnPeriod: 11
   SpawnablePrefab: {fileID: 1070880468991092, guid: 8b3088165552824419853e1d4f70c0f9,
     type: 2}
   FasterRespawn: 1

@@ -1,0 +1,1 @@
+The entry for Ludom Dare 39, made in Unity2 version 2017.1.0

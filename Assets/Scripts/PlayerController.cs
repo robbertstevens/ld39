@@ -162,7 +162,6 @@ public class PlayerController : MonoBehaviour
         if (!isDead)
         {
             Sprite dead = Resources.Load<Sprite>("Sprites/MattDead");
-            Debug.Log(dead);
             PlayerSprite.GetComponent<SpriteRenderer>().sprite = dead;
             isDead = true;
         }
